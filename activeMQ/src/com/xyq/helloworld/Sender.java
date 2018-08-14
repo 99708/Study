@@ -17,9 +17,7 @@ public class Sender {
 		//第一步 ： 建立ConnectionFactory 工厂对象，需要填入用户名密码，以及要连接的地址，
 		//均使用默认即可，默认端口为：tcp://localhsot:61616
 		ConnectionFactory factory = new ActiveMQConnectionFactory(
-				ActiveMQConnectionFactory.DEFAULT_USER, 
-				ActiveMQConnectionFactory.DEFAULT_PASSWORD, 
-				"tcp://localhost:61616");
+				"997", "123","tcp://localhost:61616");
 
 		//第二步：通过connectionFactory 工厂对象我们创建一个Connection连接，
 		//并且调用Connection的Start方法开启连接 因为Connection默认关闭的
@@ -35,17 +33,19 @@ public class Sender {
 		Destination destination = session.createQueue("queue1");
 		
 		//第五步L我们需要通过Session 创建消息的发送和接收对象
-		MessageProducer messageProducer = session.createProducer(destination);
+		MessageProducer messageProducer = session.createProducer(null);
 		
 		//第六步：我们可以使用MessageProducer的setDeliverMode方法为其设置持久化和非持久化
-		messageProducer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
+//		messageProducer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 		
 		//第七步：最后我们使用JMS的TextMessage形式的创建数据，并用messageProducer的send方法发送数据
-		for(int i = 0; i <= 5; i++) {
+		for(int i = 0; i <= 8; i++) {
 			TextMessage msg = session.createTextMessage("我是消息" + i);
-			messageProducer.send(msg);
+			messageProducer.send(destination, msg, DeliveryMode.PERSISTENT, i, 1000*40);
 			System.out.println("我发送的消息内容是：" + msg.getText());
 		}
+		
+//		session.commit();
 		
 		if(connection != null) {
 			connection.close();

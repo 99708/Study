@@ -13,9 +13,7 @@ public class Receiver {
 	public static void main(String[] args) throws Exception {
 		//1.创建工厂
 		ConnectionFactory factory = new ActiveMQConnectionFactory(
-				ActiveMQConnectionFactory.DEFAULT_USER, 
-				ActiveMQConnectionFactory.DEFAULT_PASSWORD, 
-				"tcp://localhost:61616");
+		"997", "123", "tcp://localhost:61616");
 		
 		//2、创建connection
 		Connection connection = factory.createConnection();
@@ -33,6 +31,7 @@ public class Receiver {
 		//6、消费消息
 		while(true) {
 			TextMessage msg = (TextMessage)messageConsumer.receive();
+//			msg.acknowledge();
 			if(msg == null) break;
 			System.out.println("我消费的消息是" + msg.getText());
 		}
