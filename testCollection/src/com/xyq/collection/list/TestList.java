@@ -1,4 +1,4 @@
-package com.xyq.collection;
+package com.xyq.collection.list;
 
 import java.util.ArrayList;
 import java.util.Iterator;

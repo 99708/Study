@@ -1,4 +1,4 @@
-package com.xyq.collection;
+package com.xyq.collection.list;
 
 public class Test {
 	public static void main(String[] args) {
