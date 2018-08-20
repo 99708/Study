@@ -5,6 +5,8 @@ import java.util.TreeSet;
 
 public class TestTreeSet {
 	public static void main(String[] args) {
+		
+		//按照升序或降序的方式输出
 		TreeSet<Integer> set = new TreeSet<Integer>();
 		
 		set.add(12);

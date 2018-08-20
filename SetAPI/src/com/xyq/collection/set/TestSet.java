@@ -27,6 +27,7 @@ public class TestSet {
 //		System.out.println(set2.size());
 		
 //		HashSet<Student3> set3 = new HashSet<Student3>();
+		//按照输入顺序输出
 		LinkedHashSet<Student3> set3 = new LinkedHashSet<Student3>();
 		
 		set3.add(new Student3("z3", 23));
