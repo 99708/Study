@@ -80,7 +80,70 @@ public class NameListService {
 		return null;
 	}
 	
-	public void printEmployeeMessage() {
+	public void printEmployeeMessages(int i) {
+		
+		Employee[] allEmployees = getAllEmployees();
+		int type = Integer.parseInt(Data.EMPLOYEES[i][0]);
+		
+		int id = allEmployees[i].getId();
+		String name = allEmployees[i].getName();
+		int age = allEmployees[i].getAge();
+		double salary = allEmployees[i].getSalary();
+		
+		if(type == Data.EMPLOYEE) {
+			System.out.println(id+"\t"+name+"\t"+age+"\t"+salary+"\t");
+		}
+		if(type == Data.PROGRAMMER) {
+			Programmer programmer = (Programmer)allEmployees[i];
+			System.out.println(
+					id+"\t"+name+"\t"+age+"\t"+salary+"\t"+"程序员\t"
+					+Status.FREE+"\t\t\t"+programmer.getEquipment());
+		}
+		if(type == Data.DESIGNER) {
+			Designer designer = (Designer)allEmployees[i];
+			System.out.println(
+					id+"\t"+name+"\t"+age+"\t"+salary+"\t"+"设计师\t"
+					+Status.FREE+"\t"+designer.getBouns()+"\t\t"+designer.getEquipment());
+		}
+		if(type == Data.ARCHITECT) {
+			Architect architect = (Architect)allEmployees[i];
+			System.out.println(
+					id+"\t"+name+"\t"+age+"\t"+salary+"\t"+"架构师\t"+Status.FREE+"\t"
+					+architect.getBouns()+"\t"+architect.getStock()+"\t"
+					+architect.getEquipment());
+			
+		}
+		
+	}
+	
+	public void printEmployeeMessage(int i) {
+		
+		Employee[] allEmployees = getAllEmployees();
+		int type = Integer.parseInt(Data.EMPLOYEES[i][0]);
+		
+		int id = allEmployees[i].getId();
+		String name = allEmployees[i].getName();
+		int age = allEmployees[i].getAge();
+		double salary = allEmployees[i].getSalary();
+		
+		if(type == Data.EMPLOYEE) {
+			System.out.println(id+"\t"+name+"\t"+age+"\t"+salary+"\t");
+		}
+		if(type == Data.PROGRAMMER) {
+			Programmer programmer = (Programmer)allEmployees[i];
+			System.out.println(id+"\t"+name+"\t"+age+"\t"+salary+"\t"+"程序员");
+		}
+		if(type == Data.DESIGNER) {
+			Designer designer = (Designer)allEmployees[i];
+			System.out.println(id+"\t"+name+"\t"+age+"\t"+salary+"\t"+"设计师\t"+designer.getBouns());
+		}
+		if(type == Data.ARCHITECT) {
+			Architect architect = (Architect)allEmployees[i];
+			System.out.println(
+					id+"\t"+name+"\t"+age+"\t"+salary+"\t"+"架构师\t"
+					+architect.getBouns()+"\t"+architect.getStock());
+			
+		}
 		
 	}
 	

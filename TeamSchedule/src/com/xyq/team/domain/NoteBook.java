@@ -38,7 +38,7 @@ public class NoteBook implements Equipment{
 
 	@Override
 	public String toString() {
-		return "NoteBook [model=" + model + ", price=" + price + "]";
+		return model + "(" + price + ")";
 	}
 	
 }

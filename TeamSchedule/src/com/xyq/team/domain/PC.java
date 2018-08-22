@@ -37,7 +37,7 @@ public class PC implements Equipment{
 
 	@Override
 	public String toString() {
-		return "PC [model=" + model + ", display=" + display + "]";
+		return model + "(" + display + ")";
 	}
 	
 	

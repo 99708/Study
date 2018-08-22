@@ -1,6 +1,6 @@
 package com.xyq.team.domain;
 
-public class Designer extends Employee {
+public class Designer extends Programmer{
 	private double bouns;
 	private Equipment equipment;
 	
