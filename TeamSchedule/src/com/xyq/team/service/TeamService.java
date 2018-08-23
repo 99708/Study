@@ -38,6 +38,7 @@ public class TeamService {
 		for(int i=0; i<total; i++) {
 			if(team[i] instanceof Programmer) {
 				pNumber++;
+//				if(pNumber) {}
 			}
 			if(team[i] instanceof Designer) {
 				dNumber++;
