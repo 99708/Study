@@ -12,6 +12,7 @@ import com.xyq.team.domain.Programmer;
 public class NameListService {
 	
 	private Employee[] employees;
+	TeamService teamSvc = new TeamService();
 
 	public Employee[] getEmployees() {
 		return employees;
@@ -80,7 +81,7 @@ public class NameListService {
 		return null;
 	}
 	
-	public void printEmployeeMessages(int i) {
+	public void printEmployeeMessage(int i) {
 		
 		Employee[] allEmployees = getAllEmployees();
 		int type = Integer.parseInt(Data.EMPLOYEES[i][0]);
@@ -116,53 +117,22 @@ public class NameListService {
 		
 	}
 	
-	public void printEmployeeMessage(int i) {
-		
-		Employee[] allEmployees = getAllEmployees();
-		int type = Integer.parseInt(Data.EMPLOYEES[i][0]);
-		
-		int id = allEmployees[i].getId();
-		String name = allEmployees[i].getName();
-		int age = allEmployees[i].getAge();
-		double salary = allEmployees[i].getSalary();
-		
-		if(type == Data.EMPLOYEE) {
-			System.out.println(id+"\t"+name+"\t"+age+"\t"+salary+"\t");
-		}
-		if(type == Data.PROGRAMMER) {
-			Programmer programmer = (Programmer)allEmployees[i];
-			System.out.println(id+"\t"+name+"\t"+age+"\t"+salary+"\t"+"程序员");
-		}
-		if(type == Data.DESIGNER) {
-			Designer designer = (Designer)allEmployees[i];
-			System.out.println(id+"\t"+name+"\t"+age+"\t"+salary+"\t"+"设计师\t"+designer.getBouns());
-		}
-		if(type == Data.ARCHITECT) {
-			Architect architect = (Architect)allEmployees[i];
-			System.out.println(
-					id+"\t"+name+"\t"+age+"\t"+salary+"\t"+"架构师\t"
-					+architect.getBouns()+"\t"+architect.getStock());
-			
-		}
-		
-	}
 	
 	public Employee[] getAllEmployees() {
 		return this.employees;
 	}
 	
-	public Employee getEmployee(int id) {
+	public Employee getEmployee(int id) throws TeamException {
+		Employee p = null;
 		for(int i=0; i<employees.length; i++) {
 			if(id == employees[i].getId()) {
-				return employees[i];
+				p = employees[i];
+			}
+			if(i == employees.length) {
+				throw new TeamException("你输入的员工id有误，请检查你的输入");
 			}
 		}
-		return null;
+		return p;
 	}
-	
-//	public static void main(String[] args) {
-//		
-//		
-//	}
 
 }

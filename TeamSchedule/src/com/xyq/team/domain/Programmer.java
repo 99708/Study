@@ -4,7 +4,7 @@ import com.xyq.team.service.Status;
 
 public class Programmer extends Employee {
 	private int memberId;
-	private Status status;
+	private Status status = Status.FREE;
 	private Equipment equipment;
 	
 	public int getMemberId() {
