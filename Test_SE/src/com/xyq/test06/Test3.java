@@ -11,7 +11,7 @@ public class Test3 {
 		Test3 test3 = new Test3();
 		test3.listToMap();
 		test3.mapToList();
-		
+		test3.sort();
 	}
 	
 	public void listToMap() {
@@ -50,21 +50,49 @@ public class Test3 {
 		map.put(4, new Student(4, "王语嫣", 30, "女"));
 		map.put(5, new Student(5, "扫地僧", 40, "男"));
 		
-		Set<Entry<Integer, Student>> entrys = map.entrySet();
-		StudentEntry studentEntry = new StudentEntry();
-		studentEntry.setEntrys(entrys);
-		
 		ArrayList<StudentEntry> lists = new ArrayList<StudentEntry>();
-		lists.add(studentEntry);
+		
+		Set<Entry<Integer, Student>> entrys = map.entrySet();
+		for(Entry<Integer, Student> en:entrys) {
+			StudentEntry studentEntry = new StudentEntry();
+			studentEntry.setEntrys(en);
+			lists.add(studentEntry);
+		}
 		
 		Iterator<StudentEntry> it = lists.iterator();
 		while(it.hasNext()) {
 			System.out.println(it.next());
 		}
 	}
+	
+	public void sort() {
+		
+		ArrayList<Student> lists = new ArrayList<Student>();
+		
+		lists.add(new Student(1, "乔峰", 40, "男"));
+		lists.add(new Student(2, "珠儿", 30, "女"));
+		lists.add(new Student(3, "段誉", 35, "男"));
+		lists.add(new Student(4, "王语嫣", 31, "女"));
+		lists.add(new Student(5, "扫地僧", 50, "男"));
+		
+		for(int i=0; i<lists.size(); i++) {
+			for(int j=0; j<lists.size()-1; j++) {
+				if(lists.get(j).compareTo(lists.get(j+1)) > 0) {
+					Student temp = lists.get(j);
+					lists.set(j, lists.get(j+1));
+					lists.set(j+1, temp);
+				}
+			}
+		}
+		
+		Iterator it = lists.iterator();
+		while(it.hasNext()) {
+			System.out.println(it.next());
+		}
+	}
 }
 
-class Student{
+class Student implements Comparable<Student>{
 	
 	private int id;
 	private String name;
@@ -110,31 +138,28 @@ class Student{
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", sex=" + sex + "]";
 	}
+	@Override
+	public int compareTo(Student o) {
+		return this.getAge()-o.getAge();
+	}
 	
 }
 
 class StudentEntry {
 	
-		private Set<Entry<Integer, Student>> entrys;
+	private Entry<Integer, Student> entrys;
 
-		public Set<Entry<Integer, Student>> getEntrys() {
-			return entrys;
-		}
+	public Entry<Integer, Student> getEntrys() {
+		return entrys;
+	}
 
-		public void setEntrys(Set<Entry<Integer, Student>> entrys) {
-			this.entrys = entrys;
-		}
+	public void setEntrys(Entry<Integer, Student> entrys) {
+		this.entrys = entrys;
+	}
 
-		@Override
-		public String toString() {
-			if(entrys != null) {
-				for(Entry<Integer, Student> en:entrys) {
-					System.out.println(en.getKey() + "," + en.getValue());
-				}
-			}
-			return "";
-		}	
-		
-		
-		
+	@Override
+	public String toString() {
+		return "StudentEntry [entrys=" + entrys + "]";
+	}
+
 }
