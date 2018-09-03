@@ -1,4 +1,4 @@
-package com.xyq.test;
+package com.xyq.test05;
 
 import java.util.Scanner;
 
