@@ -1,8 +1,14 @@
 package com.xyq.view;
 
+import com.xyq.service.GoodsService;
+import com.xyq.service.ShoppingCartService;
 import com.xyq.util.TSUtility;
 
 public class JDView {
+	
+	private GoodsService gs = new GoodsService();
+	private ShoppingCartService scs = new ShoppingCartService();
+	
 	public static void main(String[] args) {
 		JDView jdv = new JDView();
 		jdv.enterMainMenu();
@@ -18,29 +24,26 @@ public class JDView {
 			
 			switch(selection) {
 			case '1':
+				gs.addGoods();
 				break;
 			case '2':
+				gs.listAllGoods();
 				break;
 			case '3':
+				gs.listGoodsById();
 				break;
 			case '4':
+				scs.addToShoppingCart();
 				break;
 			case '5':
+				scs.listShoppingCart();
 				break;
 			case '6':
-				System.out.println("\n谢谢使用！");
+				System.out.println("谢谢使用！");
 				return;
 			}
 		}
 		
 	}
 	
-	public void addGoods(int id) {
-		
-	}
-	
-	public void listAllGoods() {}
-	public void listGoodsById(int id) {}
-	public void addToShoppingCart(int id, int count) {}
-	public void listShoppingCart() {}
 }
