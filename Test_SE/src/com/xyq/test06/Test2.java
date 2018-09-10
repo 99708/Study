@@ -32,6 +32,8 @@ public class Test2 {
 		treeSet.add(new Book2(3, "水浒传", 23, "人民文学出版社"));
 		treeSet.add(new Book2(4, "红楼梦", 59.70f, "人民文学出版社"));
 		
+		System.out.println("=============================================");
+		
 		Iterator<Book2> it2 = treeSet.iterator();
 		while(it2.hasNext()) {
 			System.out.println(it2.next());

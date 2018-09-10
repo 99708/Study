@@ -1,4 +1,4 @@
-package com.xyq.test;
+package com.xyq.entity;
 
 public class Dept {
 	
@@ -10,7 +10,6 @@ public class Dept {
 	}
 	
 	public Dept(int deptno, String dname, String loc) {
-		super();
 		this.deptno = deptno;
 		this.dname = dname;
 		this.loc = loc;
@@ -39,6 +38,5 @@ public class Dept {
 	public String toString() {
 		return "Dept [deptno=" + deptno + ", dname=" + dname + ", loc=" + loc + "]";
 	}
-	
 	
 }

@@ -26,6 +26,7 @@ public class Test1 {
 		map.put(3, new Book1(3, "水浒传", 23, "人民文学出版社"));
 		map.put(4, new Book1(4, "红楼梦", 59.70f, "人民文学出版社"));
 	
+		System.out.println("######################################");
 		Collection<Book1> values = map.values();
 		for(Book1 value : values) {
 			System.out.println(value);
