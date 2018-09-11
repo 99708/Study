@@ -45,6 +45,9 @@ public class Test4 {
 			bos.write(bytes, 0, len);
 			len = bis.read(bytes);
 		}
+		
+		bis.close();
+		bos.close();
 	}
 	
 	public void showName(File file, int level) {
