@@ -23,7 +23,10 @@ class Printer{
 					e.printStackTrace();
 				}
 			}
-			System.out.print(i);
+			if(index % 20 == 0) {
+				System.out.println();
+			}
+			System.out.print(i+" ");
 			index++;
 			notifyAll();
 	}
@@ -36,7 +39,10 @@ class Printer{
 				e.printStackTrace();
 			}
 		}
-		System.out.print(c);
+		if(index % 20 == 0) {
+			System.out.println();
+		}
+		System.out.print(c + " ");
 		index++;
 		notifyAll();
 	}

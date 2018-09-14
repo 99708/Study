@@ -7,6 +7,7 @@ import com.xyq.serviceImpl.UserServiceImpl;
 public class Index {
 	
 	UserService us = new UserServiceImpl();
+	private boolean flag = false;
 	
 	public static void main(String[] args) {
 		Index ind = new Index();
@@ -25,6 +26,7 @@ public class Index {
 					login();
 					break;
 				case '2':
+					upload();
 					break;
 				case '3':
 					System.out.println("谢谢使用本系统");
@@ -35,6 +37,19 @@ public class Index {
 	}
 	
 	public void login() {
-		us.login();
+		flag = us.login();
+		if(flag) {
+			System.out.println("登录成功");
+		}else {
+			System.out.println("登录失败，请检查你的输入");
+		}
+	}
+	
+	private void upload() {
+		if(!flag) {
+			System.out.println("你还没有登录，请先登录。");
+		}else {
+			us.upload();
+		}
 	}
 }

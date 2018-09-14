@@ -1,5 +1,7 @@
 package com.xyq.service;
 
 public interface UserService {
-	public void login();
+	public boolean login();
+
+	public void upload();
 }
