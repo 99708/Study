@@ -3,6 +3,7 @@ package com.xyq.serviceImpl;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -79,16 +80,26 @@ public class UserServiceImpl implements UserService{
 			Socket s = null;
 			try {
 				
+				s = new Socket("localhost", 8888);
 				BufferedInputStream bis = new BufferedInputStream(new FileInputStream(fd));
+				BufferedOutputStream bos = new BufferedOutputStream(s.getOutputStream());
+				DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+				System.out.println("请输入服务器地址");
+				String servicePath = TSUtility.readString();
+				dos.writeUTF(servicePath+"/"+fd.getName());
+				DataInputStream dis = new DataInputStream(s.getInputStream());
+				
 				byte[] b = new byte[1024];
 				int len = bis.read(b);
-				s = new Socket("localhost", 9999);
-				OutputStream os = s.getOutputStream();
-				BufferedOutputStream bos = new BufferedOutputStream(os);
 				while(len > -1) {
 					bos.write(b, 0, len);
 					len = bis.read(b);
 				}
+				
+				//接收服务端反馈
+				s.shutdownOutput();
+				String str = dis.readUTF();
+				System.out.println(str);
 				
 			} catch (IOException e) {
 				e.printStackTrace();
